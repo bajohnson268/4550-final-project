@@ -5,12 +5,23 @@ using UnityEngine;
 public class card : MonoBehaviour
 {
 
+    private void Start()
+    {
+        
+        DontDestroyOnLoad(this);
+
+    }
+
     public enum cardType {
 
         KNIGHT,
         SWORDMAN,
         ARCHER,
-        WIZARD
+        WIZARD,
+        BUFF_HEALTH,
+        BUFF_ATTACK,
+        DEBUFF_HEALTH, 
+        DEBUFF_ATTACK
 
     }
 
@@ -19,9 +30,10 @@ public class card : MonoBehaviour
     public bool selected = false;
 
     public Vector3 origPos;
-    Vector3 offset = new Vector3(0, .25f, 0);
+    Vector3 offset = new Vector3(0, .35f, 0);
 
-    Coroutine moving;
+    public Coroutine moving;
+    public Coroutine rotating;
 
     private void OnMouseEnter()
     {

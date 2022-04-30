@@ -18,48 +18,29 @@ public class player : MonoBehaviour
     [HideInInspector]
     public Coroutine cameraRot;
 
+    [HideInInspector]
+    public int cardsInHand = 0;
+    [HideInInspector]
+    public int maxCards = 6;
+
     private void Start()
     {
 
         hand = new List<card>();
+        DontDestroyOnLoad(this);
 
     }
 
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.P)) {
 
-            if (!deck.isSpawned) {
-
-                deck.spawnDeck();
-                deck.isSpawned = true;
-                return;
-
-            }
-
-            if (drawCard())
-            {
-
-                Debug.Log("Drew a card");
-
-                hand[hand.Count - 1].origPos = transform.position + handPos[hand.Count - 1];
-                StartCoroutine(movingStuff.move(hand[hand.Count - 1].gameObject, transform.position + handPos[hand.Count - 1]));
-                StartCoroutine(movingStuff.rotate(hand[hand.Count - 1].gameObject, Quaternion.identity));
-
-            }
-
-            else {
-
-                Debug.Log("no cards left");
-
-            }
-
+            deck.shuffleDeck();
+        
         }
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetAxis("Mouse ScrollWheel") > 0) {
-
-            //Debug.Log("move Cam");
 
             if (cameraMove != null)
             {
@@ -109,11 +90,15 @@ public class player : MonoBehaviour
 
     public bool drawCard() {
 
-        if (deck.cards.Count > 0) {
+        if (deck.cards.Count > 0 && cardsInHand < maxCards) {
 
             deck.cards[0].inHand = true;
+            cardsInHand++;
             hand.Add(deck.cards[0]);
             deck.cards.RemoveAt(0);
+            hand[hand.Count - 1].origPos = transform.position + handPos[hand.Count - 1];
+            StartCoroutine(movingStuff.move(hand[hand.Count - 1].gameObject, transform.position + handPos[hand.Count - 1]));
+            StartCoroutine(movingStuff.rotate(hand[hand.Count - 1].gameObject, Quaternion.identity));
             return true;
         
         }
@@ -121,4 +106,12 @@ public class player : MonoBehaviour
         return false;
     
     }
+
+    public void resetPlayer() { 
+
+        cardsInHand = 0;
+        maxCards = 6;
+    
+    }
+
 }
