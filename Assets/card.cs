@@ -28,6 +28,7 @@ public class card : MonoBehaviour
     public cardType type;
     public bool inHand = false;
     public bool selected = false;
+    public bool isReward = false;
 
     public Vector3 origPos;
     Vector3 offset = new Vector3(0, .35f, 0);
@@ -72,15 +73,17 @@ public class card : MonoBehaviour
     private void OnMouseDown()
     {
 
-        if (inHand) { 
-        
+        if (inHand)
+        {
+
             selected = true;
             GameObject.Find("hand").GetComponent<player>().selectedCard = this;
 
-            if (GameObject.Find("hand").GetComponent<player>().cameraMove != null) {
+            if (GameObject.Find("hand").GetComponent<player>().cameraMove != null)
+            {
 
                 StopCoroutine(GameObject.Find("hand").GetComponent<player>().cameraMove);
-            
+
             }
 
             if (GameObject.Find("hand").GetComponent<player>().cameraRot != null)
@@ -93,6 +96,14 @@ public class card : MonoBehaviour
             GameObject.Find("hand").GetComponent<player>().cameraMove = StartCoroutine(movingStuff.move(GameObject.Find("Main Camera"), new Vector3(0, 0.5f, -0.5f)));
             GameObject.Find("hand").GetComponent<player>().cameraRot = StartCoroutine(movingStuff.rotate(GameObject.Find("Main Camera"), Quaternion.Euler(30, 0, 0)));
 
+        }
+
+        else if (isReward && GameObject.Find("table").GetComponent<rewards>().cardsDrawn < GameObject.Find("table").GetComponent<rewards>().maxCards) { 
+        
+            GameObject.Find("deck").GetComponent<deck>().addCard(this);
+            this.isReward = false;
+            GameObject.Find("table").GetComponent<rewards>().cardsDrawn++;
+        
         }
 
         
