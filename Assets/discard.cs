@@ -16,6 +16,14 @@ public class discard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        if (Random.Range(0, 4) == 1)
+        {
+
+            difficulty.diff++;
+
+        }
+
         player = GameObject.Find("hand").GetComponent<player>();
 
         numDiscard = 5 - player.cardsPlaced;

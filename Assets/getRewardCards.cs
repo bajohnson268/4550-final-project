@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class getDiscardNum : MonoBehaviour
+public class getRewardCards : MonoBehaviour
 {
-
     Text text;
-    discard table;
+    rewards table;
     bool isDone = false;
 
     private void Start()
     {
-        
+
         text = GetComponent<Text>();
-        table = GameObject.Find("table").GetComponent<discard>();
+        table = GameObject.Find("table").GetComponent<rewards>();
 
         StartCoroutine(dialog());
 
@@ -25,36 +24,38 @@ public class getDiscardNum : MonoBehaviour
         if (isDone)
         {
 
-            text.text = "Discard " + table.numDiscard + " cards";
+            text.text = "Draw " + (table.maxCards - table.cardsDrawn) + " cards";
 
         }
 
 
     }
 
-    IEnumerator dialog() {
+    IEnumerator dialog()
+    {
 
-        yield return typingText("What a shame");
+        yield return typingText("Congrats");
         yield return new WaitForSeconds(1);
-        yield return typingText("you lost");
+        yield return typingText("you won");
         yield return new WaitForSeconds(1);
-        yield return typingText("discard more cards");
+        yield return typingText("draw some cards");
         yield return new WaitForSeconds(1);
         isDone = true;
 
 
     }
 
-    IEnumerator typingText(string message) {
+    IEnumerator typingText(string message)
+    {
 
-        for (int i = 1; i <= message.Length; i++) { 
-        
-            text.text = message.Substring(0,i);
+        for (int i = 1; i <= message.Length; i++)
+        {
+
+            text.text = message.Substring(0, i);
 
             yield return new WaitForSeconds(.05f);
-        
-        }
-    
-    }
 
+        }
+
+    }
 }

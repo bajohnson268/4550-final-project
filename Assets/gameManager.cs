@@ -13,8 +13,6 @@ public class gameManager : MonoBehaviour
 
     Coroutine redrawing;
 
-    public int difficulty;
-
     public card[] cards;
 
     private void Start()
@@ -146,7 +144,7 @@ public class gameManager : MonoBehaviour
 
         board table = GameObject.Find("table").GetComponent<board>();
 
-        if (difficulty == 0)
+        if (difficulty.diff == 0)
         {
 
             card temp = Instantiate(cards[Random.Range(0, 4)].gameObject).GetComponent<card>();
@@ -174,7 +172,7 @@ public class gameManager : MonoBehaviour
 
         }
 
-        else if (difficulty == 1)
+        else if (difficulty.diff == 1)
         {
 
             card temp = Instantiate(cards[Random.Range(0, 4)].gameObject).GetComponent<card>();
@@ -209,7 +207,7 @@ public class gameManager : MonoBehaviour
         }
 
 
-        else if (difficulty == 2)
+        else
         {
 
             card temp = Instantiate(cards[Random.Range(0, 4)].gameObject).GetComponent<card>();
@@ -246,14 +244,6 @@ public class gameManager : MonoBehaviour
                 temp.gameObject.transform.rotation = Quaternion.Euler(90, 0, 0);
 
             }
-
-        }
-
-
-        else
-        {
-
-            //spawn 5 enemies and one buff
 
         }
 

@@ -20,6 +20,12 @@ public class rewards : MonoBehaviour
     private void Start()
     {
 
+        if (Random.Range(0, 2) == 1) {
+
+            difficulty.diff++;
+        
+        }
+
         for (int i = 0; i < 8; i++) {
 
             places.Add(transform.GetChild(i).GetComponent<cardPlace>());
