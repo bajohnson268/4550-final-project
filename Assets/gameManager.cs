@@ -31,66 +31,62 @@ public class gameManager : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E)) {
 
-            StartCoroutine(drawCards(5));
-        
-        }
+        if (Input.GetKeyDown(KeyCode.E) && lastRedraw < Time.time && redrawing == null && player.maxCards != 0 && player.cardsPlaced == 0) {
 
-        if (Input.GetKeyDown(KeyCode.R) && lastRedraw < Time.time && redrawing == null && player.maxCards != 1) {
+            if (player.maxCards == 6) { 
+            
+                StartCoroutine(drawCards(5));
+                player.maxCards = 5;
+            
+            }
 
-            redrawing = StartCoroutine(redraw());
-            player.maxCards--;
+            else
+            {
+
+                redrawing = StartCoroutine(redraw());
+
+            }
 
             lastRedraw = Time.time + redrawCooldown;
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.N)) {
 
+            foreach (card obj in player.hand) {
+
+                player.deck.addCard(obj);
             
+            }
+
+            while (player.hand.Count > 0)
+            {
+
+                player.hand.RemoveAt(0);
+
+            }
+
+            StartCoroutine(delay(2, "discard"));
 
         }
 
         if (Input.GetKeyDown(KeyCode.Y)) {
 
-            board table = GameObject.Find("table").GetComponent<board>();
+            foreach (card obj in player.hand)
+            {
 
-            //while (table.enemyRow.Count > 0)
-            //{
+                player.deck.addCard(obj);
 
-            //    if(table.enemyRow[0] != null)
-            //    {
+            }
 
-            //        GameObject temp = table.enemyRow[0].gameObject;
-            //        table.enemyRow.RemoveAt(0);
-            //        Destroy(temp);
-
-            //    }
-
-            //}
-
-            //while (table.playerRow.Count > 0)
-            //{
-
-            //    if (table.playerRow[0].gameObject != null)
-            //    {
-
-            //        GameObject temp = table.playerRow[0].gameObject;
-            //        table.playerRow.RemoveAt(0);
-            //        Destroy(temp);
-
-            //    }
-
-            //}
-
-            foreach (card obj in table.enemyRow) { 
-            
-                Destroy(obj);
+            while (player.hand.Count > 0) { 
+                
+                player.hand.RemoveAt(0);
             
             }
 
-            SceneManager.LoadScene("rewards");
+            StartCoroutine(delay(2, "rewards"));
 
         }
 
@@ -138,6 +134,7 @@ public class gameManager : MonoBehaviour
 
         yield return StartCoroutine(drawCards(5));
         player.deck.spawnDeck();
+        player.maxCards--;
 
         redrawing = null;
 
@@ -260,6 +257,14 @@ public class gameManager : MonoBehaviour
 
         }
 
+    }
+
+    IEnumerator delay(float seconds, string scene) { 
+    
+        yield return new WaitForSeconds(seconds);
+
+        SceneManager.LoadScene(scene);
+    
     }
 
 }

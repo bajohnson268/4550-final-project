@@ -57,9 +57,17 @@ public class rewards : MonoBehaviour
 
         if (cardsDrawn == maxCards) {
 
-            SceneManager.LoadScene("gameScene");
+            StartCoroutine(delay());
         
         }
+
+    }
+
+    IEnumerator delay() {
+
+        yield return new WaitForSeconds(2);
+
+        SceneManager.LoadScene("gameScene");
 
     }
 

@@ -10,7 +10,13 @@ public class deck : MonoBehaviour
 
     private void Start()
     {
+
+        if (FindObjectsOfType<deck>().Length > 1) { 
         
+            Destroy(gameObject);
+        
+        }
+
         DontDestroyOnLoad(this);
 
     }
@@ -40,7 +46,8 @@ public class deck : MonoBehaviour
 
     public void spawnDeck() {
 
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + cards.Count*.001f, gameObject.transform.position.z);
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, -.5f + cards.Count*.001f, gameObject.transform.position.z);
+        int count = 0;
 
         foreach (card obj in cards) { 
         
@@ -58,8 +65,8 @@ public class deck : MonoBehaviour
 
             }
             obj.gameObject.transform.rotation = Quaternion.Euler(-90f, Random.Range(-10f, 10f), 180f);
-            obj.gameObject.transform.position = this.transform.position;
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - .001f, gameObject.transform.position.z);
+            obj.gameObject.transform.position = this.transform.position + new Vector3(0,-count++ * .001f,0);
+            //gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - .001f, gameObject.transform.position.z);
 
         }
     

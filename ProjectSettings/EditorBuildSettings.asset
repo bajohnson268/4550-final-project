@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/rewards.unity
     guid: ed011f28f17a1f142a9496b44d9caad4
+  - enabled: 1
+    path: Assets/Scenes/discard.unity
+    guid: 0267a67f92b74a64fb7c3579d8a745ec
   m_configObjects: {}

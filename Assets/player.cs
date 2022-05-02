@@ -10,7 +10,7 @@ public class player : MonoBehaviour
 
     public deck deck;
 
-    //[HideInInspector]
+    [HideInInspector]
     public card selectedCard;
 
     [HideInInspector]
@@ -22,9 +22,18 @@ public class player : MonoBehaviour
     public int cardsInHand = 0;
     [HideInInspector]
     public int maxCards = 6;
+    [HideInInspector]
+    public int cardsPlaced = 0;
 
     private void Start()
     {
+
+        if (FindObjectsOfType<player>().Length > 1)
+        {
+
+            Destroy(gameObject);
+
+        }
 
         hand = new List<card>();
         DontDestroyOnLoad(this);
@@ -111,6 +120,7 @@ public class player : MonoBehaviour
 
         cardsInHand = 0;
         maxCards = 6;
+        cardsPlaced = 0;
     
     }
 
