@@ -1,0 +1,19 @@
+[0430/190824.778:WARNING:spdy_session.cc(3391)] Received HEADERS for invalid stream 10
+[0430/190825.010:INFO:CONSOLE(1)] "window.feds.utilities.imslib is not available", source: https://www.adobe.com/etc.titan.dexterlibs/dexter/clientlibs/base/head.fp-7312b21d15dfb2b1eb6547d72676b4fb.js (1)
+[0430/190825.974:INFO:CONSOLE(19)] "🚀 container.buildInfo.environment is deprecated.Please use `container.environment.stage` instead", source: https://assets.adobedtm.com/launch-EN919758db9a654a17bac7d184b99c4820.min.js (19)
+[0430/190829.430:INFO:CONSOLE(1)] "Warning: fragment with name Currency already exists.
+graphql-tag enforces all fragment names across your application to be unique; read more about
+this in the docs: http://dev.apollodata.com/core/fragments.html#unique-names", source: https://commerce.adobe.com/store/_next/static/chunks/615-2ea35d75c2ca04f3a9fb.js (1)
+[0430/190829.432:INFO:CONSOLE(1)] "Warning: fragment with name PaymentInstrument already exists.
+graphql-tag enforces all fragment names across your application to be unique; read more about
+this in the docs: http://dev.apollodata.com/core/fragments.html#unique-names", source: https://commerce.adobe.com/store/_next/static/chunks/615-2ea35d75c2ca04f3a9fb.js (1)
+[0430/190829.573:INFO:CONSOLE(1)] "Warning: fragment with name CartItems already exists.
+graphql-tag enforces all fragment names across your application to be unique; read more about
+this in the docs: http://dev.apollodata.com/core/fragments.html#unique-names", source: https://commerce.adobe.com/store/_next/static/chunks/615-2ea35d75c2ca04f3a9fb.js (1)
+[0430/190829.573:INFO:CONSOLE(1)] "Warning: fragment with name CartPrice already exists.
+graphql-tag enforces all fragment names across your application to be unique; read more about
+this in the docs: http://dev.apollodata.com/core/fragments.html#unique-names", source: https://commerce.adobe.com/store/_next/static/chunks/615-2ea35d75c2ca04f3a9fb.js (1)
+[0430/190829.574:INFO:CONSOLE(1)] "Warning: fragment with name PaymentInstrument already exists.
+graphql-tag enforces all fragment names across your application to be unique; read more about
+this in the docs: http://dev.apollodata.com/core/fragments.html#unique-names", source: https://commerce.adobe.com/store/_next/static/chunks/615-2ea35d75c2ca04f3a9fb.js (1)
+[0430/190829.591:INFO:CONSOLE(1)] "Workaround: Ignoring React strict-mode errors originating from spectrum v2 components. Components: Accordion, AccordionItem, Button, ButtonGroup, Card, CardBody, Dropdown, Overlay, OverlayTrigger, Portal, Provider, Search, Select, Selector, Slider, SwitchBase. Methods: findDOMNode.", source: https://commerce.adobe.com/store/_next/static/chunks/pages/_app-ab18966c52954c755ba1.js (1)
