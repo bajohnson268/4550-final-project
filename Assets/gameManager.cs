@@ -85,6 +85,13 @@ public class gameManager : MonoBehaviour
 
     public void drawButton() {
 
+        if (player.cardsPlaced != 0)
+        {
+
+            return;
+
+        }
+
         if (player.maxCards == 6)
         {
 
