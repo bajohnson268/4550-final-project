@@ -25,6 +25,7 @@ public class cardPlace : MonoBehaviour
         
             card = player.selectedCard;
             card.gameObject.transform.SetParent(null, false);
+            card.GetComponent<AudioSource>().PlayOneShot(card.draw);
             SceneManager.MoveGameObjectToScene(card.gameObject, SceneManager.GetActiveScene());
             StartCoroutine(movingStuff.move(player.selectedCard.gameObject, gameObject.transform.position + new Vector3(0, 0.01f, 0)));
             StartCoroutine(movingStuff.rotate(player.selectedCard.gameObject, Quaternion.Euler(90,0,0),24));

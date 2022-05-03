@@ -108,6 +108,7 @@ public class player : MonoBehaviour
             hand[hand.Count - 1].origPos = transform.position + handPos[hand.Count - 1];
             StartCoroutine(movingStuff.move(hand[hand.Count - 1].gameObject, transform.position + handPos[hand.Count - 1]));
             StartCoroutine(movingStuff.rotate(hand[hand.Count - 1].gameObject, Quaternion.identity));
+            hand[hand.Count - 1].GetComponent<AudioSource>().PlayOneShot(hand[hand.Count - 1].draw);
             return true;
         
         }

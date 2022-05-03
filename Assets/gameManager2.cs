@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class gameManager : MonoBehaviour
+public class gameManager2 : MonoBehaviour
 {
 
     player player;
@@ -90,61 +90,11 @@ public class gameManager : MonoBehaviour
 
     }
 
-    public void confirm() {
-
-        foreach (card obj in player.hand)
-        {
-
-            player.deck.addCard(obj);
-
-        }
-
-        while (player.hand.Count > 0)
-        {
-
-            player.hand.RemoveAt(0);
-
-        }
-
-        if (Random.Range(0, 2) == 1)
-        {
-
-            StartCoroutine(delay(2, "discard"));
-
-        }
-
-        else {
-
-            StartCoroutine(delay(2, "rewards"));
-
-        }
-    
-    }
-
-    public void drawButton() {
-
-        if (player.maxCards == 6)
-        {
-
-            StartCoroutine(drawCards(5));
-            player.maxCards = 5;
-
-        }
-
-        else
-        {
-
-            redrawing = StartCoroutine(redraw());
-
-        }
-
-        lastRedraw = Time.time + redrawCooldown;
-
-    }
-
     IEnumerator drawCards(int x) {
 
         for (int i = 0; i < x; i++) {
+
+            Debug.Log(player.deck.cards.Count);
 
             player.drawCard();
 
@@ -255,6 +205,7 @@ public class gameManager : MonoBehaviour
             }
 
         }
+
 
         else
         {

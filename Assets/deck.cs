@@ -24,6 +24,7 @@ public class deck : MonoBehaviour
     public void addCard(card cardToAdd) {
 
         cards.Add(cardToAdd);
+        cardToAdd.GetComponent<AudioSource>().PlayOneShot(cardToAdd.draw);
         cardToAdd.inHand = false;
         cardToAdd.moving = StartCoroutine(movingStuff.move(cardToAdd.gameObject, this.transform.position));
         cardToAdd.rotating = StartCoroutine(movingStuff.rotate(cardToAdd.gameObject, Quaternion.Euler(-90,0,180)));
