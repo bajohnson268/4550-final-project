@@ -50,44 +50,6 @@ public class gameManager : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.N)) {
-
-            foreach (card obj in player.hand) {
-
-                player.deck.addCard(obj);
-            
-            }
-
-            while (player.hand.Count > 0)
-            {
-
-                player.hand.RemoveAt(0);
-
-            }
-
-            StartCoroutine(delay(2, "discard"));
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.Y)) {
-
-            foreach (card obj in player.hand)
-            {
-
-                player.deck.addCard(obj);
-
-            }
-
-            while (player.hand.Count > 0) { 
-                
-                player.hand.RemoveAt(0);
-            
-            }
-
-            StartCoroutine(delay(2, "rewards"));
-
-        }
-
     }
 
     public void confirm() {
