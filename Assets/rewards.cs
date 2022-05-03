@@ -73,6 +73,8 @@ public class rewards : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
+        GameObject.Find("hand").GetComponent<player>().resetPlayer();
+
         SceneManager.LoadScene("gameScene");
 
     }

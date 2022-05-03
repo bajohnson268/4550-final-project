@@ -99,19 +99,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2532128354674462103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5543d580ef883a4c8e0c93c2fee20d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d83af16a5c0c694195a9aa3699c5047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  units:
-  - {fileID: 3167281650149433628, guid: 03358ffed511ccd428179f0f9ed438bf, type: 3}
-  - {fileID: -9089807858719467220, guid: c9a4dac6042652341bafd99c2e983f79, type: 3}
-  - {fileID: 740562251832812587, guid: 2883359d7513cde4ba312e59722a09a7, type: 3}
-  - {fileID: 4085756004155152709, guid: 484a916b6b487144daae11971626cbf7, type: 3}
-  buffs:
-  - {fileID: 1508217761543570472, guid: 640d4b2f6f305ee41b126c1c86d471d9, type: 3}
-  - {fileID: 6434871207884039693, guid: 30c3577be18b60340a2172f34d3b7d6b, type: 3}
-  - {fileID: 559021604348159652, guid: 9231d10b8a90fd64488300c65ef72edf, type: 3}
-  - {fileID: 1202537923034084347, guid: 35508db8bd7f25842bee93802382bec8, type: 3}
+  units: []
+  buffs: []
   places: []
   unitRewards: []
   buffRewards: []

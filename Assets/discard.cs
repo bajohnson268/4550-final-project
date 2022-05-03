@@ -114,25 +114,25 @@ public class discard : MonoBehaviour
 
         if (deck.cards.Count <= 0) {
 
-            Debug.Log("game Over");
-        
+            StartCoroutine(delay(2, "gameOver"));
+
         }
 
         else if (numDiscard <= 0) {
 
-            StartCoroutine(delay());
+            StartCoroutine(delay(2, "gameScene"));
         
         }
 
     }
 
-    IEnumerator delay() { 
+    IEnumerator delay(float seconds, string scene) { 
     
         yield return new WaitForSeconds(2);
 
         GameObject.Find("hand").GetComponent<player>().resetPlayer();
 
-        SceneManager.LoadScene("gameScene");
+        SceneManager.LoadScene(scene);
 
     }
 }
