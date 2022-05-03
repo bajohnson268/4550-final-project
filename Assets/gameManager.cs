@@ -68,6 +68,8 @@ public class gameManager : MonoBehaviour
 
         }
 
+        player.deck.despawnDeck();
+
         if (Random.Range(0, 2) == 1)
         {
 

@@ -17,6 +17,8 @@ public class discard : MonoBehaviour
     void Start()
     {
 
+        GameObject.Find("hand").GetComponent<player>().deck.spawnDeck();
+
         if (Random.Range(0, 4) == 1)
         {
 

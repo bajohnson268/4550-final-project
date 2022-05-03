@@ -20,6 +20,8 @@ public class rewards : MonoBehaviour
     private void Start()
     {
 
+        GameObject.Find("hand").GetComponent<player>().deck.spawnDeck();
+
         if (Random.Range(0, 2) == 1) {
 
             difficulty.diff++;
