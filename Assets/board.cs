@@ -13,6 +13,7 @@ public class board : MonoBehaviour
 
         for (int i = 0; i < 5; i++) {
 
+            
             playerRow.Add(gameObject.transform.GetChild(i).gameObject.GetComponent<card>());
 
         }
