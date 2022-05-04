@@ -13,6 +13,7 @@ public class MenuLogic : MonoBehaviour
     public List<GameObject> instructionsObjects;
     public List<GameObject> optionsObjects;
 
+    // Toggles the menu visibility when needed.
     public void ToggleMenuVisibility()
     {
         foreach (GameObject obj in menuObjects)
@@ -22,6 +23,7 @@ public class MenuLogic : MonoBehaviour
         Debug.Log("Toggle reached the end of function.");
     }
 
+    // Toggles the options menu visibility when needed.
     public void ToggleOptionsVisibility()
     {
         foreach (GameObject obj in optionsObjects)
@@ -31,52 +33,33 @@ public class MenuLogic : MonoBehaviour
         Debug.Log("Options are gone.");
     }
 
-    /*public void ToggleInstructionsVisibility()
-    {
-        foreach (GameObject obj in instructionsObjects)
-        { 
-            obj.SetActive(!obj.activeSelf);
-        }
-        Debug.Log("Successfully reached the end of the instructions visibility thingy.");
-    }
-    */
-
+    // Exits the game.
     public void ExitGame()
     {
         Debug.Log("Quit");
         Application.Quit();
     }
-
+    // Mutes the game music.
     public void MuteMusic()
     {
         gameMusic.mute = !gameMusic.mute;
     }
-
+    // Mutes sfx
     public void MuteSFX()
     {
         muteSfx = !muteSfx;
     }
-
+    // Loads the game menu scene to replay.
     public void ReloadGame()
     {
         SceneManager.LoadScene("Game Menu");
     }
-
+    // Activates the game scene.
     public void OnPlay()
     {
         SceneManager.LoadScene("gameScene");
         Debug.Log("Loaded gameScene successfully. ");
     }
-
-    /*public void OnOptions() 
-    {
-        foreach (GameObject obj in instructionsObjects)
-        {
-            obj.SetActive(!obj.activeSelf);
-        }
-        Debug.Log("Successfully reached the end of the instructions visibility thingy.");
-    }
-    */
 
     private void DontDestroyOnLoad() 
     {

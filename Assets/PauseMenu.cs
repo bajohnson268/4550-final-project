@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
 
 
     // Update is called once per frame
+    // Pause menu toggle is below.
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
@@ -25,6 +26,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    // Toggles the pause menu to on/off.
     public void Resume() 
     {
         pauseMenuUI.SetActive(false);
@@ -32,19 +34,20 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
     }
 
+    // The pause menu is activated.
     void Pause() 
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
-
+    // Loads the game menu scene.
     public void LoadMenu() 
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Game Menu");
     }
-
+    // Quits the game.
     public void QuitGame() 
     {
         Debug.Log("Quitting game... ");

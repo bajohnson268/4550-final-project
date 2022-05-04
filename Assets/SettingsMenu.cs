@@ -7,6 +7,8 @@ public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
 
+    // Controller to set the volume in the game,
+    // using an exposed parameter.
     public void SetVolume(float volume) 
     {
         audioMixer.SetFloat("volume", volume);
