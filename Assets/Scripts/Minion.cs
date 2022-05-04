@@ -14,6 +14,7 @@ public class Minion : MonoBehaviour
     Coroutine attacking;
     public AudioClip attackSound;
     AudioSource sound;
+    public List<GameObject> enemies = new List<GameObject>();
 
     Rigidbody rb;
     public bool alive = true;
@@ -23,7 +24,7 @@ public class Minion : MonoBehaviour
     NavMeshAgent navMeshAgent;
     public bool withinRange = false;
     public GameObject target;
-    public int attackDelay;
+    public float attackDelay;
     public Vector3 targetPosition;
 
 
@@ -41,6 +42,8 @@ public class Minion : MonoBehaviour
         pFrom++;
         unit = gameObject.name.Substring(pFrom, pTo - pFrom);
         sound = GameObject.Find("Music").GetComponent<AudioSource>();
+        StartCoroutine(enemyCollector());
+
     }
 
     private void Update()
@@ -54,10 +57,34 @@ public class Minion : MonoBehaviour
             GetComponent<SphereCollider>().enabled = false;
             navMeshAgent.destination = transform.position;
         }
+
+        
         
         
         if (alive)
         {
+            if (target != null)
+            {
+                if (!target.GetComponent<Minion>().alive)
+                {
+                    enemies.Remove(target);
+                    target = null;
+                    withinRange = enemies.Count == 0 ? true : false;
+                    Debug.Log("Removing target from enemies");
+                    movePositionTransform = enemySearch().transform;
+                }
+            }
+            else if(enemies.Count != 0)
+            {
+                movePositionTransform = enemySearch().transform;
+            }
+            
+            
+            
+            
+            
+            
+            
             if (navMeshAgent.destination != transform.position && navMeshAgent.remainingDistance > 1f)
             {
                 anim.SetBool("Walking", true);
@@ -80,23 +107,77 @@ public class Minion : MonoBehaviour
                 }
             }
         }
+
+
+        
+
+
+
+
+
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(EnemyTeam))
+        if(other.CompareTag(EnemyTeam) && other.GetType() == typeof(CapsuleCollider))   
         {
-            target = other.gameObject;
-            withinRange = true;
+            if (target == null || !target.GetComponent<Minion>().alive)
+            {
+                target = null;
+                target = other.gameObject;
+                withinRange = true;
+            }
+             
         }
     }
 
-   /* private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        target = null;
-        withinRange = false;
-    }*/
+        if(other.gameObject == target)
+        {
+            withinRange = false;
+        }
+    }
+
+
+
+    /* private void OnTriggerExit(Collider other)
+     {
+         target = null;
+         withinRange = false;
+     }*/
+
+
+
+    public GameObject enemySearch()
+    {
+        float closest = 10000;
+        GameObject tempTarget = null;
+        for(int i =0;i < enemies.Count; i++)
+        {
+            float distance = Vector3.Distance(enemies[i].transform.position, transform.position);
+            if(distance < closest)
+            {
+                closest = distance;
+                tempTarget = enemies[i];
+            }
+        }
+
+        return tempTarget;
+    }
+
+
+    IEnumerator enemyCollector()
+    {
+        yield return new WaitForSeconds(1);
+        GameObject[] temp = GameObject.FindGameObjectsWithTag(EnemyTeam);
+
+        for (int i = 0; i < temp.Length; i++)
+        {
+            enemies.Add(temp[i]);
+        }
+    }
 
 
     IEnumerator Attack()
@@ -117,8 +198,8 @@ public class Minion : MonoBehaviour
                 sound.PlayOneShot(attackSound);
                 switch (unit)
                 {
-                    case string n when (n.Equals("Archer") || n.Equals("Mage")):
-                        GameObject bullet = Instantiate(projectile, projectileSpawnPoint.transform.position, Quaternion.identity, projectileSpawnPoint.transform);
+                    case string n when (n.Equals("Archer") || n.Equals("Wizard")):
+                        GameObject bullet = Instantiate(projectile, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation, projectileSpawnPoint.transform);
                         Vector3 direction = (target.transform.position - projectileSpawnPoint.transform.position).normalized * 4;
                         bullet.GetComponent<Rigidbody>().velocity = direction;
                         bullet.GetComponent<Projectile>().enemyTeam = EnemyTeam;

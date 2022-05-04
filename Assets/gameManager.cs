@@ -70,7 +70,7 @@ public class gameManager : MonoBehaviour
 
         player.deck.despawnDeck();
 
-        if (Random.Range(0, 2) == 1)
+        /*if (Random.Range(0, 2) == 1)
         {
 
             StartCoroutine(delay(2, "discard"));
@@ -81,8 +81,9 @@ public class gameManager : MonoBehaviour
 
             StartCoroutine(delay(2, "rewards"));
 
-        }
-    
+        }*/
+
+        StartCoroutine(startBattle());
     }
 
     public void drawButton() {
@@ -112,6 +113,34 @@ public class gameManager : MonoBehaviour
         lastRedraw = Time.time + redrawCooldown;
 
     }
+
+
+    IEnumerator startBattle()
+    {
+        foreach(card card in GameObject.Find("table").GetComponent<board>().enemyRow)
+        {
+            if (card != null)
+            {
+                
+                GameObject.Find("Spawner").GetComponent<UnitSpawner>().enemyCards.Add(card.name);
+            }
+            else
+                GameObject.Find("Spawner").GetComponent<UnitSpawner>().enemyCards.Add("Space");
+        }
+        foreach(card card in GameObject.Find("table").GetComponent<board>().playerRow)
+        {
+            if (card != null)
+            {
+                GameObject.Find("Spawner").GetComponent<UnitSpawner>().playerCards.Add(card.name);
+            }
+            else
+                GameObject.Find("Spawner").GetComponent<UnitSpawner>().playerCards.Add("Space");
+        }
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("BattleScene");
+
+    }
+
 
     IEnumerator drawCards(int x) {
 

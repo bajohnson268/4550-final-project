@@ -450,7 +450,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3881777237101298094}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -633,11 +633,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: 
   health: 3
-  attack: 1
+  attack: 3
   EnemyTeam: 
   projectileSpawnPoint: {fileID: 3881777237101298094}
   projectile: {fileID: 5383602981013790062, guid: cf8dc95fe15817840bd2369ed6f41335, type: 3}
   attackSound: {fileID: 8300000, guid: afa422896fb544142ad447c2e85b2a07, type: 3}
+  enemies: []
   alive: 1
   movePositionTransform: {fileID: 0}
   withinRange: 0

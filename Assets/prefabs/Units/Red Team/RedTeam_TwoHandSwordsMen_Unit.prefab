@@ -1569,17 +1569,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: 
-  health: 5
-  attack: 2
+  health: 4
+  attack: 5
   EnemyTeam: 
   projectileSpawnPoint: {fileID: 0}
   projectile: {fileID: 0}
   attackSound: {fileID: 8300000, guid: e3330f5f39c0d0d4490ca83f35527c60, type: 3}
+  enemies: []
   alive: 1
   movePositionTransform: {fileID: 0}
   withinRange: 0
   target: {fileID: 0}
-  attackDelay: 3
+  attackDelay: 4.4
   targetPosition: {x: 0, y: 0, z: 0}
 --- !u!136 &2970767255255247834
 CapsuleCollider:
@@ -1657,7 +1658,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8957190200793841132}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1

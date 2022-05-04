@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class cardPlace : MonoBehaviour
 {
-
+    board board;
     public card card;
     player player;
 
@@ -15,7 +15,7 @@ public class cardPlace : MonoBehaviour
     {
 
         player = GameObject.Find("hand").GetComponent<player>();
-
+        board = GameObject.Find("table").GetComponent<board>();
     }
 
     private void OnMouseDown()
@@ -30,6 +30,7 @@ public class cardPlace : MonoBehaviour
             StartCoroutine(movingStuff.move(player.selectedCard.gameObject, gameObject.transform.position + new Vector3(0, 0.01f, 0)));
             StartCoroutine(movingStuff.rotate(player.selectedCard.gameObject, Quaternion.Euler(90,0,0),24));
             player.hand.Remove(card);
+            board.playerRow[transform.GetSiblingIndex()] = card;
             card.inHand = false;
             player.cardsPlaced++;
 

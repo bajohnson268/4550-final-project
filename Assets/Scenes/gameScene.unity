@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0142887505, g: 0.0065742005, b: 0.0015081529, a: 1}
+  m_IndirectSpecularColor: {r: 0.014288726, g: 0.006574185, b: 0.001508144, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -134,6 +134,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec852c4973df782479560df1f4a5f24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &184992673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184992675}
+  - component: {fileID: 184992674}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &184992674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184992673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbaa0e4a0a710074e9dd73c81c1c767c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCards: []
+  playerCards: []
+  healthMod: 0
+  enemyHealth: 0
+  damageMod: 0
+  enemyDamage: 0
+  enemySpaces:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  blueArcher: {fileID: 4116217513237960894, guid: 675530e17af2e054aaa64b294cc4eec5, type: 3}
+  redArcher: {fileID: 7042305038423201316, guid: bc5863d948b88c7479a2b65ca2ac5c50, type: 3}
+  blueKnight: {fileID: 4515639967228513485, guid: 3765862e0f4816f4487d2c9da1851ec1, type: 3}
+  redKnight: {fileID: 3283728584580347600, guid: 43b825191697f0847a3adee8be6464bd, type: 3}
+  blueSword: {fileID: 7696231040886536512, guid: 0bfb8a0b9889a1e4daacd6d5eeb00791, type: 3}
+  redSword: {fileID: 8957190200793841132, guid: 9a5c38e4800812245aa2d36020326e1f, type: 3}
+  blueWizard: {fileID: 3413464714832008884, guid: fbca806e89c58324d89ab3765eea44fb, type: 3}
+  redWizard: {fileID: 6739656830815403518, guid: 4678304b3a098b14a8cffb0ffb6a7d59, type: 3}
+--- !u!4 &184992675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184992673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1143, y: 446.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &253052984
 PrefabInstance:
   m_ObjectHideFlags: 0

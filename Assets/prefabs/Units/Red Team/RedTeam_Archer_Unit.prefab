@@ -1444,11 +1444,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: 
   health: 3
-  attack: 1
+  attack: 3
   EnemyTeam: 
   projectileSpawnPoint: {fileID: 7888655971118878556}
   projectile: {fileID: 5383602981013790062, guid: cf8dc95fe15817840bd2369ed6f41335, type: 3}
   attackSound: {fileID: 8300000, guid: afa422896fb544142ad447c2e85b2a07, type: 3}
+  enemies: []
   alive: 1
   movePositionTransform: {fileID: 0}
   withinRange: 0
