@@ -32,6 +32,7 @@ public class getDiscardNum : MonoBehaviour
 
     }
 
+    //types text several times
     IEnumerator dialog(bool check) {
 
         yield return typingText("What a shame");
@@ -60,6 +61,7 @@ public class getDiscardNum : MonoBehaviour
 
     }
 
+    //types current text
     IEnumerator typingText(string message) {
 
         for (int i = 1; i <= message.Length; i++) { 

@@ -21,6 +21,7 @@ public class discard : MonoBehaviour
 
         GameObject.Find("hand").GetComponent<player>().deck.spawnDeck();
 
+        //randomly increments diff
         if (Random.Range(0, 4) == 1)
         {
 
@@ -30,17 +31,20 @@ public class discard : MonoBehaviour
 
         player = GameObject.Find("hand").GetComponent<player>();
 
+        //gets the number to discard
         numDiscard = 5 - player.cardsPlaced;
         Debug.Log(player.cardsPlaced);
 
         deck = GameObject.Find("deck").GetComponent<deck>();
 
+        //gets card places
         for (int i = 0; i < 8; i++) { 
         
             places[i] = gameObject.transform.GetChild(i).GetComponent<cardPlace>();
         
         }
 
+        //moves deck to right places
         foreach (card obj in deck.cards) {
 
             if (obj.type == card.cardType.KNIGHT) { 
@@ -115,9 +119,10 @@ public class discard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //checks if text is done
         if (text.isDone) {
 
+            //if no cards in deck game over
             if (deck.cards.Count <= 0)
             {
 
@@ -136,6 +141,7 @@ public class discard : MonoBehaviour
 
     }
 
+    //waits to move to next scene
     IEnumerator delay(float seconds, string scene) { 
     
         yield return new WaitForSeconds(2);

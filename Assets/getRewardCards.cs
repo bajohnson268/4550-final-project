@@ -21,6 +21,8 @@ public class getRewardCards : MonoBehaviour
 
     private void Update()
     {
+
+        //shows how many more they can add
         if (isDone)
         {
 
@@ -31,6 +33,7 @@ public class getRewardCards : MonoBehaviour
 
     }
 
+    //types out text several times
     IEnumerator dialog()
     {
 
@@ -45,6 +48,7 @@ public class getRewardCards : MonoBehaviour
 
     }
 
+    //Types out current text
     IEnumerator typingText(string message)
     {
 

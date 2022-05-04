@@ -23,15 +23,26 @@ public class cardPlace : MonoBehaviour
 
         if (player.selectedCard != null && card == null && isPlayerPlace) { 
         
+            //sets the card to the place
             card = player.selectedCard;
-            card.gameObject.transform.SetParent(null, false);
+
+            //plays the darwing sound effect
             card.GetComponent<AudioSource>().PlayOneShot(card.draw);
+
+            //puts the card in then active scene to be destroyed 
+            card.gameObject.transform.SetParent(null, false);
             SceneManager.MoveGameObjectToScene(card.gameObject, SceneManager.GetActiveScene());
+
+            //moves and rotates card
             StartCoroutine(movingStuff.move(player.selectedCard.gameObject, gameObject.transform.position + new Vector3(0, 0.01f, 0)));
             StartCoroutine(movingStuff.rotate(player.selectedCard.gameObject, Quaternion.Euler(90,0,0),24));
+
+            //removes card from hand
             player.hand.Remove(card);
             board.playerRow[transform.GetSiblingIndex()] = card;
             card.inHand = false;
+
+            //updates cardsplaced and makes selected card null
             player.cardsPlaced++;
             player.selectedCard = null;
 

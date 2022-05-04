@@ -28,6 +28,7 @@ public class player : MonoBehaviour
     private void Start()
     {
 
+        //check if other player and destrys if there is
         if (FindObjectsOfType<player>().Length > 1)
         {
 
@@ -42,13 +43,7 @@ public class player : MonoBehaviour
 
     private void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.P)) {
-
-            deck.shuffleDeck();
-        
-        }
-
+        //moves camera up
         if (Input.GetKeyDown(KeyCode.W) || Input.GetAxis("Mouse ScrollWheel") > 0) {
 
             if (cameraMove != null)
@@ -70,6 +65,7 @@ public class player : MonoBehaviour
 
         }
 
+        //moves camera down
         if (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Mouse ScrollWheel") < 0)
         {
 
@@ -101,13 +97,26 @@ public class player : MonoBehaviour
 
         if (deck.cards.Count > 0 && cardsInHand < maxCards) {
 
+            //sets card to inhand
             deck.cards[0].inHand = true;
+
+            //increments cardsinhand
             cardsInHand++;
+
+            //adds card to hand
             hand.Add(deck.cards[0]);
+
+            //removes from deck
             deck.cards.RemoveAt(0);
+
+            //sets position
             hand[hand.Count - 1].origPos = transform.position + handPos[hand.Count - 1];
+
+            //moves and rotates cards
             StartCoroutine(movingStuff.move(hand[hand.Count - 1].gameObject, transform.position + handPos[hand.Count - 1]));
             StartCoroutine(movingStuff.rotate(hand[hand.Count - 1].gameObject, Quaternion.identity));
+
+            //plays audio
             hand[hand.Count - 1].GetComponent<AudioSource>().PlayOneShot(hand[hand.Count - 1].draw);
             return true;
         
@@ -119,6 +128,7 @@ public class player : MonoBehaviour
 
     public void resetPlayer() { 
 
+        //resets values for player
         cardsInHand = 0;
         maxCards = 6;
         cardsPlaced = 0;

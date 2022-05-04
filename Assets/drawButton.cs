@@ -20,7 +20,7 @@ public class drawButton : MonoBehaviour
 
     private void Update()
     {
-
+        //updates draw based on how many you would draw
         if (player.maxCards == 6)
         {
 
