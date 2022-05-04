@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0142887505, g: 0.0065742005, b: 0.0015081529, a: 1}
+  m_IndirectSpecularColor: {r: 0.014288791, g: 0.0065742163, b: 0.00150815, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52edabed8ebaf3044a9a3319cc40443e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 271216242}
   numDiscard: 0
 --- !u!1001 &74996928
 PrefabInstance:
@@ -375,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ade9384c82b30241ad2dbb73e299df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDone: 0
 --- !u!114 &271216243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,10 +399,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 4
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0

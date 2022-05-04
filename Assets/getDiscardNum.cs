@@ -8,15 +8,15 @@ public class getDiscardNum : MonoBehaviour
 
     Text text;
     discard table;
-    bool isDone = false;
+    public bool isDone = false;
 
-    private void Start()
+    private void OnEnable()
     {
         
         text = GetComponent<Text>();
         table = GameObject.Find("table").GetComponent<discard>();
 
-        StartCoroutine(dialog());
+        StartCoroutine(dialog(table.numDiscard != 0));
 
     }
 
@@ -32,14 +32,29 @@ public class getDiscardNum : MonoBehaviour
 
     }
 
-    IEnumerator dialog() {
+    IEnumerator dialog(bool check) {
 
         yield return typingText("What a shame");
         yield return new WaitForSeconds(1);
         yield return typingText("you lost");
         yield return new WaitForSeconds(1);
-        yield return typingText("discard more cards");
-        yield return new WaitForSeconds(1);
+
+        if (check)
+        {
+
+            yield return typingText("discard more cards");
+            yield return new WaitForSeconds(1);
+
+        }
+
+        else {
+
+            yield return typingText("You've lost Enough cards");
+            yield return new WaitForSeconds(1);
+
+        }
+
+
         isDone = true;
 
 

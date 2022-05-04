@@ -11,6 +11,8 @@ public class discard : MonoBehaviour
 
     player player;
 
+    public getDiscardNum text;
+
     public int numDiscard;
 
     // Start is called before the first frame update
@@ -114,16 +116,22 @@ public class discard : MonoBehaviour
     void Update()
     {
 
-        if (deck.cards.Count <= 0) {
+        if (text.isDone) {
 
-            StartCoroutine(delay(2, "gameOver"));
+            if (deck.cards.Count <= 0)
+            {
 
-        }
+                StartCoroutine(delay(2, "gameOver"));
 
-        else if (numDiscard <= 0) {
+            }
 
-            StartCoroutine(delay(2, "gameScene"));
-        
+            else if (numDiscard <= 0)
+            {
+
+                StartCoroutine(delay(2, "gameScene"));
+
+            }
+
         }
 
     }
