@@ -34,6 +34,7 @@ public class BattleWatcher : MonoBehaviour
         }
         if (allRedDead && redTeam.Count >0)
         {
+            Destroy(GameObject.Find("Spawner"));
             SceneManager.LoadScene("rewards");
         }
 
@@ -49,6 +50,8 @@ public class BattleWatcher : MonoBehaviour
         }
         if (allBlueDead && blueTeam.Count >0)
         {
+
+            Destroy(GameObject.Find("Spawner"));
             SceneManager.LoadScene("discard");
         }
     }
