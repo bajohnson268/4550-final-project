@@ -138,6 +138,7 @@ public class gameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(2);
         Destroy(GameObject.Find("GAME MUSIC"));
+
         SceneManager.LoadScene("BattleScene");
 
     }

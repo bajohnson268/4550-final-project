@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class BattleWatcher : MonoBehaviour
 {
     public List<GameObject> redTeam = new List<GameObject>();
     public List<GameObject> blueTeam = new List<GameObject>();
+    float time = 0;
+    public GameObject timer;
     
     
     
@@ -24,7 +27,12 @@ public class BattleWatcher : MonoBehaviour
     void FixedUpdate()
     {
         StartCoroutine(checkWinner());
-        
+        time += Time.deltaTime;
+        timer.GetComponent<TextMeshProUGUI>().text = "Time: " + Mathf.Round(time);
+        if(time >= 30f)
+        {
+            SceneManager.LoadScene("discard");
+        }
     }
 
     IEnumerator checkWinner()
@@ -61,6 +69,7 @@ public class BattleWatcher : MonoBehaviour
             Destroy(GameObject.Find("Spawner"));
             SceneManager.LoadScene("discard");
         }
+        
     }
 
     IEnumerator assembleTeams()

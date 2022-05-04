@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class player : MonoBehaviour
     public int maxCards = 6;
     [HideInInspector]
     public int cardsPlaced = 0;
+    bool inBattle;
 
     private void Start()
     {
@@ -43,8 +45,11 @@ public class player : MonoBehaviour
 
     private void Update()
     {
+
+        inBattle = SceneManager.GetActiveScene().name.Equals("gameScene") ? false : true;
+        
         //moves camera up
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetAxis("Mouse ScrollWheel") > 0) {
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetAxis("Mouse ScrollWheel") > 0) && !inBattle) {
 
             if (cameraMove != null)
             {
@@ -66,7 +71,7 @@ public class player : MonoBehaviour
         }
 
         //moves camera down
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Mouse ScrollWheel") < 0)
+        if ((Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Mouse ScrollWheel") < 0) && !inBattle)
         {
 
             //Debug.Log("move Cam");
