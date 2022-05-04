@@ -63,7 +63,7 @@ public class BattleWatcher : MonoBehaviour
                 break;
             }
         }
-        if (allBlueDead && blueTeam.Count > 0)
+        if (allBlueDead && blueTeam.Count > 0 || (time >= 7 && blueTeam.Count == 0))
         {
             yield return new WaitForSeconds(5);
             Destroy(GameObject.Find("Spawner"));
