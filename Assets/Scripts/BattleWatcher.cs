@@ -23,8 +23,14 @@ public class BattleWatcher : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        StartCoroutine(checkWinner());
+        
+    }
+
+    IEnumerator checkWinner()
+    {
         bool allRedDead = true;
-        foreach(GameObject unit in redTeam)
+        foreach (GameObject unit in redTeam)
         {
             if (unit.GetComponent<Minion>().alive)
             {
@@ -32,15 +38,16 @@ public class BattleWatcher : MonoBehaviour
                 break;
             }
         }
-        if (allRedDead && redTeam.Count >0)
+        if (allRedDead && redTeam.Count > 0)
         {
+            yield return new WaitForSeconds(5);
             Destroy(GameObject.Find("Spawner"));
             SceneManager.LoadScene("rewards");
         }
 
 
         bool allBlueDead = true;
-        foreach(GameObject unit in blueTeam)
+        foreach (GameObject unit in blueTeam)
         {
             if (unit.GetComponent<Minion>().alive)
             {
@@ -48,9 +55,9 @@ public class BattleWatcher : MonoBehaviour
                 break;
             }
         }
-        if (allBlueDead && blueTeam.Count >0)
+        if (allBlueDead && blueTeam.Count > 0)
         {
-
+            yield return new WaitForSeconds(5);
             Destroy(GameObject.Find("Spawner"));
             SceneManager.LoadScene("discard");
         }
