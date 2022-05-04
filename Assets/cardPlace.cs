@@ -33,6 +33,7 @@ public class cardPlace : MonoBehaviour
             board.playerRow[transform.GetSiblingIndex()] = card;
             card.inHand = false;
             player.cardsPlaced++;
+            player.selectedCard = null;
 
         }
 
