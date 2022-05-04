@@ -1454,7 +1454,7 @@ MonoBehaviour:
   movePositionTransform: {fileID: 0}
   withinRange: 0
   target: {fileID: 0}
-  attackDelay: 8
+  attackDelay: 4
   targetPosition: {x: 0, y: 0, z: 0}
 --- !u!195 &7888655971578591260
 NavMeshAgent:

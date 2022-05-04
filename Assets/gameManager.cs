@@ -137,6 +137,7 @@ public class gameManager : MonoBehaviour
                 GameObject.Find("Spawner").GetComponent<UnitSpawner>().playerCards.Add("Space");
         }
         yield return new WaitForSeconds(2);
+        Destroy(GameObject.Find("GAME MUSIC"));
         SceneManager.LoadScene("BattleScene");
 
     }

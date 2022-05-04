@@ -1580,7 +1580,7 @@ MonoBehaviour:
   movePositionTransform: {fileID: 0}
   withinRange: 0
   target: {fileID: 0}
-  attackDelay: 4.4
+  attackDelay: 4
   targetPosition: {x: 0, y: 0, z: 0}
 --- !u!136 &2970767255255247834
 CapsuleCollider:

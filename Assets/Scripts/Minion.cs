@@ -179,6 +179,12 @@ public class Minion : MonoBehaviour
         }
     }
 
+    IEnumerator reset()
+    {
+        yield return new WaitForSeconds(10);
+        navMeshAgent.destination = EnemyTeam.Equals("BlueTeam") ? new Vector3(7, 0, 14) : new Vector3(28, 0, -14);
+    }
+
 
     IEnumerator Attack()
     {

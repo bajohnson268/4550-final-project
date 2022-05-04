@@ -967,7 +967,7 @@ MonoBehaviour:
   EnemyTeam: 
   projectileSpawnPoint: {fileID: 5857349113438543362}
   projectile: {fileID: 3991658682159431311, guid: 4bd659cb18324b04eab1b6748c9bd270, type: 3}
-  attackSound: {fileID: 8300000, guid: afa422896fb544142ad447c2e85b2a07, type: 3}
+  attackSound: {fileID: 8300000, guid: 9db6cbf8709f5e047a93ab8b05005b07, type: 3}
   enemies: []
   alive: 1
   movePositionTransform: {fileID: 0}
