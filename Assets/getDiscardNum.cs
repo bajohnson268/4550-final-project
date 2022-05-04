@@ -40,7 +40,7 @@ public class getDiscardNum : MonoBehaviour
         yield return typingText("you lost");
         yield return new WaitForSeconds(1);
 
-        if (check)
+        if (!check)
         {
 
             yield return typingText("discard more cards");
