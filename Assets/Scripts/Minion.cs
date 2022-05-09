@@ -189,10 +189,6 @@ public class Minion : MonoBehaviour
     IEnumerator Attack()
     {
 
-        
-
-        yield return new WaitForSeconds(attackDelay);
-
         if (target.GetComponent<Minion>().alive)
         {
             
@@ -230,7 +226,10 @@ public class Minion : MonoBehaviour
         }
         else
             target = null;
-            
+
+        yield return new WaitForSeconds(attackDelay);
+        attacking = null;
+
     }
 
 

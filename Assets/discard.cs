@@ -19,8 +19,6 @@ public class discard : MonoBehaviour
     void Start()
     {
 
-        GameObject.Find("hand").GetComponent<player>().deck.spawnDeck();
-
         //randomly increments diff
         if (Random.Range(0, 4) == 1)
         {
@@ -30,12 +28,14 @@ public class discard : MonoBehaviour
         }
 
         player = GameObject.Find("hand").GetComponent<player>();
+        player.inBattle = false;
 
         //gets the number to discard
         numDiscard = 5 - player.cardsPlaced;
         Debug.Log(player.cardsPlaced);
 
         deck = GameObject.Find("deck").GetComponent<deck>();
+        deck.spawnDeck();
 
         //gets card places
         for (int i = 0; i < 8; i++) { 

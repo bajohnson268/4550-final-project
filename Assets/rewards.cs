@@ -19,8 +19,9 @@ public class rewards : MonoBehaviour
 
     private void Start()
     {
-
-        GameObject.Find("hand").GetComponent<player>().deck.spawnDeck();
+        player player = GameObject.Find("hand").GetComponent<player>();
+        player.deck.spawnDeck();
+        player.inBattle = false;
 
         //random chance to increment diff
         if (Random.Range(0, 2) == 1) {

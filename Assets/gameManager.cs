@@ -54,39 +54,35 @@ public class gameManager : MonoBehaviour
 
     public void confirm() {
 
-        foreach (card obj in player.hand)
+        if (player.cardsPlaced > 0)
         {
 
-            player.deck.addCard(obj);
+            foreach (card obj in player.hand)
+            {
 
-        }
+                player.deck.addCard(obj);
 
-        while (player.hand.Count > 0)
-        {
+            }
 
-            player.hand.RemoveAt(0);
+            while (player.hand.Count > 0)
+            {
 
-        }
+                player.hand.RemoveAt(0);
 
-        player.deck.despawnDeck();
+            }
 
-        /*if (Random.Range(0, 2) == 1)
-        {
-
-            StartCoroutine(delay(2, "discard"));
-
+            StartCoroutine(startBattle());
         }
 
         else {
 
-            StartCoroutine(delay(2, "rewards"));
+            GameObject.Find("Canvas").transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<mainTalking>().noCardsText();
+        
+        }
 
-        }*/
-
-        StartCoroutine(startBattle());
     }
 
-    public void drawButton() {
+        public void drawButton() {
 
         if (player.cardsPlaced != 0)
         {
@@ -138,7 +134,7 @@ public class gameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(2);
         Destroy(GameObject.Find("GAME MUSIC"));
-
+        player.deck.despawnDeck();
         SceneManager.LoadScene("BattleScene");
 
     }

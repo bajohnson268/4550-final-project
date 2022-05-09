@@ -25,7 +25,8 @@ public class player : MonoBehaviour
     public int maxCards = 6;
     [HideInInspector]
     public int cardsPlaced = 0;
-    bool inBattle;
+    [HideInInspector]
+    public bool inBattle;
 
     private void Start()
     {
@@ -45,8 +46,6 @@ public class player : MonoBehaviour
 
     private void Update()
     {
-
-        inBattle = SceneManager.GetActiveScene().name.Equals("gameScene") ? false : true;
         
         //moves camera up
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetAxis("Mouse ScrollWheel") > 0) && !inBattle) {

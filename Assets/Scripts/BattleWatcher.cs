@@ -10,23 +10,29 @@ public class BattleWatcher : MonoBehaviour
     public List<GameObject> blueTeam = new List<GameObject>();
     float time = 0;
     public GameObject timer;
-    
-    
+
+    Coroutine task;
     
     
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Sorting Teams");
-        StartCoroutine(assembleTeams());
+        task = StartCoroutine(assembleTeams());
         GameObject.Find("Spawner").GetComponent<UnitSpawner>().spawn();
+        GameObject.Find("hand").GetComponent<player>().inBattle = true;
         
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        StartCoroutine(checkWinner());
+        if (task == null) { 
+        
+            task = StartCoroutine(checkWinner());
+
+        }
+        
         time += Time.deltaTime;
         timer.GetComponent<TextMeshProUGUI>().text = "Time: " + Mathf.Round(time);
         if(time >= 30f)
@@ -46,9 +52,9 @@ public class BattleWatcher : MonoBehaviour
                 break;
             }
         }
-        if (allRedDead && redTeam.Count > 0)
+        if (allRedDead && redTeam.Count > 0 || redTeam.Count == 0)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             Destroy(GameObject.Find("Spawner"));
             SceneManager.LoadScene("rewards");
         }
@@ -63,12 +69,14 @@ public class BattleWatcher : MonoBehaviour
                 break;
             }
         }
-        if (allBlueDead && blueTeam.Count > 0 || (time >= 7 && blueTeam.Count == 0))
+        if (allBlueDead && blueTeam.Count > 0 || blueTeam.Count == 0)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             Destroy(GameObject.Find("Spawner"));
             SceneManager.LoadScene("discard");
         }
+
+        task = null;
         
     }
 
@@ -92,5 +100,8 @@ public class BattleWatcher : MonoBehaviour
             unit.GetComponent<Minion>().health += GameObject.Find("Spawner").GetComponent<UnitSpawner>().healthMod;
             unit.GetComponent<Minion>().attack += GameObject.Find("Spawner").GetComponent<UnitSpawner>().damageMod;
         }
+
+        task = null;
+
     }
 }
